@@ -30,7 +30,7 @@ console.log(details);
   function updateUsersList() {
     let print = '';
     details.forEach((user, index) => {
-      print += `&bull; ${user.name} - ${user.email} <button class="dlt-button">delete</button><br>`;
+      print += `&bull; ${user.name} - ${user.email} <button class="dlt-button">delete</button> <button class="edit-button">edit </button><br>`;
     });
   
     document.querySelector('#users').innerHTML = print;
@@ -42,6 +42,13 @@ console.log(details);
         deleteUser(index);
       });
     });
+
+    let editButton = document.querySelectorAll(".edit-button")
+    editButton.forEach((editButton, index)=> {
+      editButton.addEventListener("click", ()=> {
+        editUser(index);
+      })
+    })
   }
   
   updateUsersList(); 
@@ -52,6 +59,15 @@ console.log(details);
     localStorage.setItem("details", JSON.stringify(details)); 
   }
   
+  function editUser(index){
+    const userD = details[index];
+    document.querySelector('#name').value = userD.name;
+    document.querySelector('#email').value = userD.email;
+    deleteUser(index);
+
+  }
+
+
   document.querySelector('#name').value = '';
   document.querySelector('#email').value = '';
 
