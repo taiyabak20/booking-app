@@ -26,29 +26,11 @@ details.push(objInput);
 console.log(details);
   localStorage.setItem("details", JSON.stringify(details));
 
-  function updateUsersList() {
-    let print = '';
-    details.forEach((user, index) => {
-      print += `&bull; ${user.name} - ${user.email} <button class="dlt-button">delete</button><br>`;
-    });
-  
-    document.querySelector('#users').innerHTML = print;
-  
-    let deleteButtons = document.querySelectorAll(".dlt-button");
-  
-    deleteButtons.forEach((deleteButton, index) => {
-      deleteButton.addEventListener("click", () => {
-        deleteUser(index);
-      });
-    });
-  }
-  
-  updateUsersList(); 
-  
-  function deleteUser(index) {
-    details.splice(index, 1);
-    updateUsersList();
-  }
+  let print =''
+  details.forEach(user => {
+    print+=`&bull; ${user.name} - ${user.email}  <br>`
+    document.querySelector('#users').innerHTML=print;
+  });
   
   document.querySelector('#name').value = '';
   document.querySelector('#email').value = '';
