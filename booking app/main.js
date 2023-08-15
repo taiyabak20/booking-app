@@ -16,6 +16,8 @@ let emailInput= document.querySelector('#email').value;
   const storedUserDataJSON = localStorage.getItem("details");
   const details = storedUserDataJSON ? JSON.parse(storedUserDataJSON) : [];
 
+
+
   
   const objInput = {
     name: nameInput ,
@@ -38,4 +40,3 @@ console.log(details);
 
   //console.log(objInput);
 });
-console.log(list);
